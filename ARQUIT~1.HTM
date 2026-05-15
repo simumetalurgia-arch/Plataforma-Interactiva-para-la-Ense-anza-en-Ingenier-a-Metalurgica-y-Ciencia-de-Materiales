@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SimuMetalurgia © | Plataforma de Presentación RedCOLSI</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            /* Paleta Azul Rey y Blanco */
+            --primary-blue: #4169e1; 
+            --secondary-blue: #002366; 
+            --bg-color: #f4f7f9; 
+            --card-bg: #ffffff; 
+            --text-dark: #2c3e50;
+            --text-muted: #596a7a;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Header Estilo Claro */
+        header {
+            width: 100%;
+            padding: 50px 20px;
+            text-align: center;
+            background: linear-gradient(180deg, rgba(65, 105, 225, 0.08) 0%, rgba(244, 247, 249, 1) 100%);
+            border-bottom: 1px solid rgba(65, 105, 225, 0.2);
+            margin-bottom: 40px;
+        }
+
+        .header-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 2.3rem;
+            margin: 0;
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+            text-transform: uppercase;
+            font-weight: 800;
+            color: var(--secondary-blue);
+        }
+
+        .subtitle {
+            color: var(--primary-blue);
+            font-size: 1.1rem;
+            margin-top: 10px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* Contenedor principal */
+        .container {
+            max-width: 1200px;
+            width: 95%;
+            padding-bottom: 60px;
+        }
+
+        /* GRID ESTRICTO: 3 columnas */
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        /* Tarjetas de Software */
+        .module-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 30px;
+            border-top: 5px solid var(--primary-blue);
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            border: 1px solid #eaeaea;
+            border-top: 5px solid var(--primary-blue);
+        }
+
+        .module-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(65, 105, 225, 0.15);
+            border-color: rgba(65, 105, 225, 0.2);
+        }
+
+        .module-card::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle at top right, rgba(65, 105, 225, 0.08), transparent);
+            pointer-events: none;
+            border-radius: 50%;
+            transform: translate(30%, -30%);
+        }
+
+        .module-number {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .module-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin: 0 0 15px 0;
+            line-height: 1.3;
+            color: var(--secondary-blue);
+        }
+
+        .module-description {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 25px;
+            flex-grow: 1;
+            line-height: 1.5;
+        }
+
+        .btn-enter {
+            align-self: flex-start;
+            padding: 10px 20px;
+            background-color: white;
+            border: 2px solid var(--primary-blue);
+            color: var(--primary-blue);
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .module-card:hover .btn-enter {
+            background-color: var(--primary-blue);
+            color: white;
+        }
+
+        /* Iconos */
+        .icon-box {
+            font-size: 2.2rem;
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+        }
+
+        footer {
+            margin-top: auto;
+            padding: 30px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(0,0,0,0.05);
+            width: 100%;
+            text-align: center;
+            background-color: var(--card-bg);
+        }
+
+        /* En tablets se pasa a 2 y en celulares a 1, pero en PC/proyector se queda en 3 */
+        @media (max-width: 950px) {
+            .modules-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 650px) {
+            .modules-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <div class="subtitle">Ecosistemas Virtuales Multi-Escala</div>
+            <h1>Arquitectura de Plataforma Interactiva para la Enseñanza en Ingeniería Metalúrgica y Ciencia de Materiales</h1>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="modules-grid">
+            
+            <a href="https://simumetalurgia-arch.github.io/Software-de-Simulacion-y-Aprendizaje-Modulo-01/" class="module-card" target="_blank">
+                <div class="icon-box"><i class="fas fa-balance-scale"></i></div>
+                <span class="module-number">Módulo 01</span>
+                <h2 class="module-title">Densidad Física</h2>
+                <p class="module-description">Análisis interactivo de la densidad volumétrica y propiedades físicas de metales basados en su estructura atómica.</p>
+                <div class="btn-enter">ACCEDER <i class="fas fa-arrow-right"></i></div>
+            </a>
+
+            <a href="https://simumetalurgia-arch.github.io/Software-de-Simulacion-y-Aprendizaje-Modulo-02/" class="module-card" target="_blank">
+                <div class="icon-box"><i class="fas fa-temperature-high"></i></div>
+                <span class="module-number">Módulo 02</span>
+                <h2 class="module-title">Fusión y Refractariedad</h2>
+                <p class="module-description">Estudio termodinámico de puntos de fusión y comportamiento de materiales sometidos a altas temperaturas operativas.</p>
+                <div class="btn-enter">ACCEDER <i class="fas fa-arrow-right"></i></div>
+            </a>
+
+            <a href="https://simumetalurgia-arch.github.io/Software-de-Simulacion-y-Aprendizaje-Modulo-03/" class="module-card" target="_blank">
+                <div class="icon-box"><i class="fas fa-cubes"></i></div>
+                <span class="module-number">Módulo 03</span>
+                <h2 class="module-title">Arquitectura de Cristales</h2>
+                <p class="module-description">Visualización 3D interactiva de redes cristalinas (BCC, FCC, HCP) y parámetros de red a nivel microestructural.</p>
+                <div class="btn-enter">ACCEDER <i class="fas fa-arrow-right"></i></div>
+            </a>
+
+            <a href="https://simumetalurgia-arch.github.io/Software-de-Simulacion-y-Aprendizaje-Modulo-04/" class="module-card" target="_blank">
+                <div class="icon-box"><i class="fas fa-atom"></i></div>
+                <span class="module-number">Módulo 04</span>
+                <h2 class="module-title">Materiales Alotrópicos y Polimorfismo</h2>
+                <p class="module-description">Simulación de cambios de fase y transformaciones polimórficas inducidas por temperatura en metales puros.</p>
+                <div class="btn-enter">ACCEDER <i class="fas fa-arrow-right"></i></div>
+            </a>
+
+            <a href="https://simumetalurgia-arch.github.io/Software-de-Simulacion-y-Aprendizaje-Modulo-05/" class="module-card" target="_blank">
+                <div class="icon-box"><i class="fas fa-industry"></i></div>
+                <span class="module-number">Módulo 05</span>
+                <h2 class="module-title">Extrusión de Polímeros</h2>
+                <p class="module-description">Plataforma de procesamiento de polímeros, reología y simulación de métodos de conformado industrial.</p>
+                <div class="btn-enter">ACCEDER <i class="fas fa-arrow-right"></i></div>
+            </a>
+
+            <a href="https://simumetalurgia-arch.github.io/Software-de-Aprendizaje-Modulo-06/" class="module-card" target="_blank">
+                <div class="icon-box"><i class="fas fa-exchange-alt"></i></div>
+                <span class="module-number">Módulo 06</span>
+                <h2 class="module-title">Convertidor de Unidades</h2>
+                <p class="module-description">Módulo técnico especializado en la transformación de magnitudes del Sistema Internacional al Sistema Inglés.</p>
+                <div class="btn-enter">ACCEDER <i class="fas fa-arrow-right"></i></div>
+            </a>
+
+        </div>
+    </div>
+
+    <footer>SimuMetalurgia © | RedCOLSI <br><br> 
+Desarrollo: <strong> Andrés Felipe Caro Miranda & José Gabriel Franco Correa </strong>  |  Asesoría: <strong> Prof. Ana Emilse Coy Echeverria   &   Prof. Carlos Andrés Galán Pinilla.</strong> <br><br> Universidad Industrial de Santander | UIS. </footer> 
+
+
+</body>
+</html>
